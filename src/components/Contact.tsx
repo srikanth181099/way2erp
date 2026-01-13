@@ -18,7 +18,7 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Open email client with pre-filled message
-    const mailtoLink = `mailto:mascorpit@gmail.com?subject=Inquiry from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.email}`;
+    const mailtoLink = `mailto:contact@way2erp.com?subject=Inquiry from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.email}`;
     window.location.href = mailtoLink;
     
     toast({
@@ -99,10 +99,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
                     <a
-                      href="mailto:mascorpit@gmail.com"
+                      href="mailto:contact@way2erp.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      mascorpit@gmail.com
+                      contact@way2erp.com
                     </a>
                   </div>
                 </div>
