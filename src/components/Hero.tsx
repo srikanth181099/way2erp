@@ -18,8 +18,7 @@ const Hero = () => {
                 <span className="text-primary block">System Access</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
-                Get instant access to SAP S/4HANA, ECC, BW, CRM and more. 
-                Professional training environments with developer keys included.
+                Get instant access to S/4HANA 2025 | BW/4HANA 2023 | BPC 11 On BW/4HANA | BPC 11 | BODS 4.2 | EWM TM | MDG 2023 | GRC 12 | ECC 6 EHP8 | SolMAN 7.2 | PO7.5 Professional training environments
               </p>
             </div>
 
