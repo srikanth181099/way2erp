@@ -38,12 +38,6 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button variant="outline" size="sm">
-            Log In
-          </Button>
-          <Button size="sm">Get Started</Button>
-        </div>
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -64,10 +58,6 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="flex flex-col gap-3 mt-4">
-                <Button variant="outline">Log In</Button>
-                <Button>Get Started</Button>
-              </div>
             </nav>
           </SheetContent>
         </Sheet>
