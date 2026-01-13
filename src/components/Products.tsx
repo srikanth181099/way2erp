@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Server, Sparkles } from "lucide-react";
+import { Check, Server, Sparkles, Zap, Database, Shield } from "lucide-react";
 
 const products = [
   {
@@ -10,6 +10,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Database,
+    gradient: "from-blue-500 to-cyan-500",
     features: ["Full HANA Stack", "Developer Keys", "24/7 Access", "No VPN Required"],
   },
   {
@@ -18,6 +20,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: true,
+    icon: Zap,
+    gradient: "from-violet-500 to-purple-600",
     features: ["Latest Release", "SAP_ALL Profile", "Full EWM", "24/7 Access"],
   },
   {
@@ -26,6 +30,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Server,
+    gradient: "from-emerald-500 to-teal-500",
     features: ["SAP_ALL Profile", "Developer Keys", "Fiori Apps", "24/7 Access"],
   },
   {
@@ -34,6 +40,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Database,
+    gradient: "from-orange-500 to-amber-500",
     features: ["BPC Integration", "Full Analytics", "Developer Keys", "24/7 Access"],
   },
   {
@@ -42,6 +50,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Shield,
+    gradient: "from-rose-500 to-pink-500",
     features: ["GRC 12 Suite", "Risk Management", "Access Control", "24/7 Access"],
   },
   {
@@ -50,6 +60,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Sparkles,
+    gradient: "from-indigo-500 to-blue-500",
     features: ["Full BO Stack", "Crystal Reports", "Web Intelligence", "24/7 Access"],
   },
   {
@@ -58,6 +70,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Server,
+    gradient: "from-cyan-500 to-blue-500",
     features: ["Extended WM", "Transportation Mgmt", "Process Orchestration", "24/7 Access"],
   },
   {
@@ -66,6 +80,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Database,
+    gradient: "from-fuchsia-500 to-purple-500",
     features: ["Full SolMan", "ChaRM", "Test Suite", "24/7 Access"],
   },
   {
@@ -74,6 +90,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Zap,
+    gradient: "from-lime-500 to-green-500",
     features: ["Fiori Apps", "Gateway Config", "MDG Setup", "24/7 Access"],
   },
   {
@@ -82,6 +100,8 @@ const products = [
     monthlyPrice: 29,
     quarterlyPrice: 69,
     popular: false,
+    icon: Server,
+    gradient: "from-yellow-500 to-orange-500",
     features: ["IDES Data", "All Modules", "Developer Keys", "24/7 Access"],
   },
   {
@@ -90,6 +110,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Database,
+    gradient: "from-teal-500 to-emerald-500",
     features: ["Retail Module", "POS Integration", "Merchandise Mgmt", "24/7 Access"],
   },
   {
@@ -98,6 +120,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Zap,
+    gradient: "from-amber-500 to-red-500",
     features: ["Oil & Gas Module", "HPM", "TSW", "24/7 Access"],
   },
   {
@@ -106,6 +130,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Server,
+    gradient: "from-sky-500 to-indigo-500",
     features: ["Process Integration", "Orchestration", "Adapters", "24/7 Access"],
   },
   {
@@ -114,6 +140,8 @@ const products = [
     monthlyPrice: 49,
     quarterlyPrice: 99,
     popular: false,
+    icon: Database,
+    gradient: "from-pink-500 to-rose-500",
     features: ["Transportation", "Extended WM", "Full Integration", "24/7 Access"],
   },
 ];
@@ -125,85 +153,107 @@ const Products = () => {
   };
 
   return (
-    <section id="products" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">
-            <Sparkles className="h-3 w-3 mr-1" />
+    <section id="products" className="py-16 md:py-24 relative overflow-hidden">
+      {/* Colorful background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-12 md:mb-16">
+          <Badge className="mb-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground border-0 px-4 py-1.5">
+            <Sparkles className="h-3.5 w-3.5 mr-1.5" />
             SAP Access Solutions
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent mb-4">
             Our SAP Systems
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Professional SAP access with developer keys and instant activation
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              className={`relative flex flex-col transition-all duration-300 hover:shadow-xl ${
-                product.popular ? "border-primary shadow-lg ring-2 ring-primary/20" : ""
-              }`}
-            >
-              {product.popular && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary">
-                  Most Popular
-                </Badge>
-              )}
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2 mb-1">
-                  <Server className="h-5 w-5 text-primary flex-shrink-0" />
-                  <CardTitle className="text-base leading-tight">{product.name}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-grow space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-baseline justify-between p-3 bg-muted/50 rounded-lg">
-                    <span className="text-sm text-muted-foreground">1 Month</span>
-                    <div>
-                      <span className="text-2xl font-bold text-foreground">${product.monthlyPrice}</span>
-                      <span className="text-xs text-muted-foreground">/mo</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          {products.map((product) => {
+            const IconComponent = product.icon;
+            return (
+              <Card
+                key={product.id}
+                className={`relative flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group bg-card/80 backdrop-blur-sm ${
+                  product.popular ? "ring-2 ring-primary shadow-xl shadow-primary/20" : "hover:shadow-primary/10"
+                }`}
+              >
+                {product.popular && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-primary-foreground border-0 shadow-lg">
+                    ⭐ Most Popular
+                  </Badge>
+                )}
+                
+                {/* Gradient header bar */}
+                <div className={`h-1.5 w-full bg-gradient-to-r ${product.gradient} rounded-t-lg`} />
+                
+                <CardHeader className="pb-3 pt-5">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-xl bg-gradient-to-br ${product.gradient} shadow-lg`}>
+                      <IconComponent className="h-5 w-5 text-white" />
+                    </div>
+                    <CardTitle className="text-sm md:text-base leading-tight font-semibold">{product.name}</CardTitle>
+                  </div>
+                </CardHeader>
+                
+                <CardContent className="flex-grow space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between p-3 bg-muted/50 rounded-xl border border-border/50 hover:bg-muted/70 transition-colors">
+                      <span className="text-sm text-muted-foreground font-medium">1 Month</span>
+                      <div className="text-right">
+                        <span className="text-2xl font-bold text-foreground">${product.monthlyPrice}</span>
+                        <span className="text-xs text-muted-foreground">/mo</span>
+                      </div>
+                    </div>
+                    <div className={`flex items-center justify-between p-3 rounded-xl bg-gradient-to-r ${product.gradient} bg-opacity-10 border-2 border-transparent bg-clip-padding`} style={{ background: `linear-gradient(white, white) padding-box, linear-gradient(to right, var(--tw-gradient-stops)) border-box` }}>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-sm font-semibold text-foreground">3 Months</span>
+                        <Badge variant="secondary" className="text-[10px] px-1.5 py-0 bg-accent/20 text-accent-foreground">SAVE</Badge>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-2xl font-bold text-foreground">${product.quarterlyPrice}</span>
+                        <span className="text-xs text-muted-foreground">/3mo</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-baseline justify-between p-3 bg-primary/5 rounded-lg border border-primary/20">
-                    <span className="text-sm font-medium text-primary">3 Months</span>
-                    <div>
-                      <span className="text-2xl font-bold text-primary">${product.quarterlyPrice}</span>
-                      <span className="text-xs text-muted-foreground">/3mo</span>
-                    </div>
-                  </div>
-                </div>
-                <ul className="space-y-1.5">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2 text-xs">
-                      <Check className="h-3 w-3 text-primary flex-shrink-0" />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter className="flex gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="flex-1"
-                  onClick={() => handlePayPal(product.name, product.monthlyPrice, "1 Month")}
-                >
-                  1 Month
-                </Button>
-                <Button
-                  size="sm"
-                  className="flex-1"
-                  onClick={() => handlePayPal(product.name, product.quarterlyPrice, "3 Months")}
-                >
-                  3 Months
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+                  
+                  <ul className="space-y-2">
+                    {product.features.map((feature, index) => (
+                      <li key={index} className="flex items-center gap-2 text-xs md:text-sm">
+                        <div className={`p-0.5 rounded-full bg-gradient-to-r ${product.gradient}`}>
+                          <Check className="h-2.5 w-2.5 text-white" />
+                        </div>
+                        <span className="text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                
+                <CardFooter className="flex gap-2 pt-4">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="flex-1 hover:bg-muted/80 transition-all"
+                    onClick={() => handlePayPal(product.name, product.monthlyPrice, "1 Month")}
+                  >
+                    1 Month
+                  </Button>
+                  <Button
+                    size="sm"
+                    className={`flex-1 bg-gradient-to-r ${product.gradient} hover:opacity-90 text-white border-0 shadow-lg transition-all hover:shadow-xl`}
+                    onClick={() => handlePayPal(product.name, product.quarterlyPrice, "3 Months")}
+                  >
+                    3 Months
+                  </Button>
+                </CardFooter>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
