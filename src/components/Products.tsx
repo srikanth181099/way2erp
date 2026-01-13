@@ -7,10 +7,10 @@ const products = [
   {
     id: "s4hana-2023",
     name: "S/4 HANA 2023",
-    description: "Latest SAP S/4HANA with full functionality and SAP_ALL profile",
+    description: "SAP S/4HANA 2023 with full functionality and SAP_ALL profile",
     price: 49,
     period: "month",
-    popular: true,
+    popular: false,
     features: ["SAP_ALL Profile", "Developer Keys", "Full EWM", "24/7 Access", "No VPN Required"],
   },
   {
@@ -55,7 +55,7 @@ const products = [
     description: "Latest S/4HANA 2025 release with SAP_ALL profile and newest features",
     price: 55,
     period: "month",
-    popular: false,
+    popular: true,
     features: ["SAP_ALL Profile", "Developer Keys", "Latest Release", "24/7 Access", "No VPN Required"],
   },
   {
