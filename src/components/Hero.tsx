@@ -22,15 +22,6 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                <Server className="h-5 w-5" />
-                Order Now
-              </Button>
-              <Button variant="outline" size="lg">
-                View Products
-              </Button>
-            </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-border">
               <div className="flex items-center gap-2">
