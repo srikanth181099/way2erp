@@ -1,158 +1,205 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Server } from "lucide-react";
+import { Check, Server, Sparkles } from "lucide-react";
 
 const products = [
   {
-    id: "s4hana-2023",
-    name: "S/4 HANA 2023",
-    description: "SAP S/4HANA 2023 with full functionality and SAP_ALL profile",
-    price: 49,
-    period: "month",
+    id: "sap-hana-25",
+    name: "SAP HANA 2.5",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: false,
-    features: ["SAP_ALL Profile", "Developer Keys", "Full EWM", "24/7 Access", "No VPN Required"],
-  },
-  {
-    id: "s4hana-2022",
-    name: "S/4 HANA 2022",
-    description: "Stable S/4HANA version with SAP_ALL profile included",
-    price: 45,
-    period: "month",
-    popular: false,
-    features: ["SAP_ALL Profile", "Developer Keys", "Fiori Apps", "24/7 Access", "No VPN Required"],
-  },
-  {
-    id: "ecc-ehp8",
-    name: "ECC IDES EHP8 2019",
-    description: "Classic ECC system with IDES data for comprehensive training",
-    price: 39,
-    period: "month",
-    popular: false,
-    features: ["IDES Data", "Developer Keys", "All Modules", "24/7 Access", "No VPN Required"],
-  },
-  {
-    id: "bw-75",
-    name: "BW 7.5",
-    description: "SAP Business Warehouse for analytics and reporting training",
-    price: 35,
-    period: "month",
-    popular: false,
-    features: ["Full BW Stack", "Developer Keys", "Sample Data", "24/7 Access", "No VPN Required"],
-  },
-  {
-    id: "crm-ehp2",
-    name: "CRM IDES EHP2",
-    description: "SAP CRM system with IDES version for sales and marketing training",
-    price: 35,
-    period: "month",
-    popular: false,
-    features: ["IDES Data", "Developer Keys", "Full CRM", "24/7 Access", "No VPN Required"],
+    features: ["Full HANA Stack", "Developer Keys", "24/7 Access", "No VPN Required"],
   },
   {
     id: "s4hana-2025",
-    name: "S/4 HANA 2025",
-    description: "Latest S/4HANA 2025 release with SAP_ALL profile and newest features",
-    price: 55,
-    period: "month",
+    name: "SAP S/4HANA 2025",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: true,
-    features: ["SAP_ALL Profile", "Developer Keys", "Latest Release", "24/7 Access", "No VPN Required"],
+    features: ["Latest Release", "SAP_ALL Profile", "Full EWM", "24/7 Access"],
   },
   {
-    id: "s4hana-2021",
-    name: "S/4 HANA 2021",
-    description: "S/4HANA 2021 with SAP_ALL profile and latest patches",
-    price: 45,
-    period: "month",
+    id: "s4hana-2023",
+    name: "SAP S/4HANA 2023",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: false,
-    features: ["SAP_ALL Profile", "Developer Keys", "Latest Patches", "24/7 Access", "No VPN Required"],
+    features: ["SAP_ALL Profile", "Developer Keys", "Fiori Apps", "24/7 Access"],
   },
   {
-    id: "s4hana-2020",
-    name: "S/4 HANA 2020",
-    description: "Stable S/4HANA 2020 with SAP_ALL profile",
-    price: 42,
-    period: "month",
+    id: "bw4hana-bpc",
+    name: "SAP BW/4HANA BPC 11 2021",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: false,
-    features: ["SAP_ALL Profile", "Developer Keys", "Fiori Apps", "24/7 Access", "No VPN Required"],
+    features: ["BPC Integration", "Full Analytics", "Developer Keys", "24/7 Access"],
   },
   {
-    id: "s4hana-1610",
-    name: "S/4 HANA 1610 IDES",
-    description: "S/4HANA with IDES data and SAP_ALL profile",
-    price: 39,
-    period: "month",
+    id: "grc-12",
+    name: "SAP GRC 12 on S4HANA 2023",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: false,
-    features: ["IDES Data", "SAP_ALL Profile", "Developer Keys", "24/7 Access", "No VPN Required"],
+    features: ["GRC 12 Suite", "Risk Management", "Access Control", "24/7 Access"],
   },
   {
-    id: "dedicated-server",
-    name: "Dedicated Server",
-    description: "Your own dedicated server with custom configuration",
-    price: 199,
-    period: "month",
+    id: "businessobjects",
+    name: "SAP BusinessObjects",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
     popular: false,
-    features: ["Dedicated Resources", "Custom Config", "Root Access", "24/7 Support", "Full Control"],
+    features: ["Full BO Stack", "Crystal Reports", "Web Intelligence", "24/7 Access"],
+  },
+  {
+    id: "ewm-tm-po",
+    name: "SAP EWM 9.5 | TM 9.5 | PO 7.5",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Extended WM", "Transportation Mgmt", "Process Orchestration", "24/7 Access"],
+  },
+  {
+    id: "solution-manager",
+    name: "SAP Solution Manager 7.2",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Full SolMan", "ChaRM", "Test Suite", "24/7 Access"],
+  },
+  {
+    id: "fiori-gateway",
+    name: "SAP FIORI / NW Gateway / MDG",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Fiori Apps", "Gateway Config", "MDG Setup", "24/7 Access"],
+  },
+  {
+    id: "ehp8-ides",
+    name: "SAP EHP8 IDES",
+    monthlyPrice: 29,
+    quarterlyPrice: 69,
+    popular: false,
+    features: ["IDES Data", "All Modules", "Developer Keys", "24/7 Access"],
+  },
+  {
+    id: "is-retail",
+    name: "SAP IS-Retail",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Retail Module", "POS Integration", "Merchandise Mgmt", "24/7 Access"],
+  },
+  {
+    id: "is-oil-gas",
+    name: "SAP IS-Oil and Gas",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Oil & Gas Module", "HPM", "TSW", "24/7 Access"],
+  },
+  {
+    id: "pi-po",
+    name: "SAP PI || PO 7.5",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Process Integration", "Orchestration", "Adapters", "24/7 Access"],
+  },
+  {
+    id: "tm-ewm",
+    name: "SAP TM 9.5 || EWM",
+    monthlyPrice: 49,
+    quarterlyPrice: 99,
+    popular: false,
+    features: ["Transportation", "Extended WM", "Full Integration", "24/7 Access"],
   },
 ];
 
 const Products = () => {
-  const handlePayPal = (productName: string, price: number) => {
-    const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mascorpit@gmail.com&item_name=${encodeURIComponent(productName + " - Way2ERP")}&amount=${price}&currency_code=USD`;
+  const handlePayPal = (productName: string, price: number, period: string) => {
+    const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mascorpit@gmail.com&item_name=${encodeURIComponent(productName + " - " + period + " - Way2ERP")}&amount=${price}&currency_code=USD`;
     window.open(paypalUrl, "_blank");
   };
 
   return (
-    <section id="products" className="py-20 bg-muted/30">
+    <section id="products" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
+          <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">
+            <Sparkles className="h-3 w-3 mr-1" />
+            SAP Access Solutions
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Our SAP Systems
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from our range of SAP systems with developer keys and instant activation
+            Professional SAP access with developer keys and instant activation
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <Card
               key={product.id}
-              className={`relative flex flex-col ${product.popular ? "border-primary shadow-lg" : ""}`}
+              className={`relative flex flex-col transition-all duration-300 hover:shadow-xl ${
+                product.popular ? "border-primary shadow-lg ring-2 ring-primary/20" : ""
+              }`}
             >
               {product.popular && (
                 <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary">
                   Most Popular
                 </Badge>
               )}
-              <CardHeader>
-                <div className="flex items-center gap-2 mb-2">
-                  <Server className="h-5 w-5 text-primary" />
-                  <CardTitle className="text-lg">{product.name}</CardTitle>
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <Server className="h-5 w-5 text-primary flex-shrink-0" />
+                  <CardTitle className="text-base leading-tight">{product.name}</CardTitle>
                 </div>
-                <CardDescription>{product.description}</CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-foreground">${product.price}</span>
-                  <span className="text-muted-foreground">/{product.period}</span>
+              <CardContent className="flex-grow space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-baseline justify-between p-3 bg-muted/50 rounded-lg">
+                    <span className="text-sm text-muted-foreground">1 Month</span>
+                    <div>
+                      <span className="text-2xl font-bold text-foreground">${product.monthlyPrice}</span>
+                      <span className="text-xs text-muted-foreground">/mo</span>
+                    </div>
+                  </div>
+                  <div className="flex items-baseline justify-between p-3 bg-primary/5 rounded-lg border border-primary/20">
+                    <span className="text-sm font-medium text-primary">3 Months</span>
+                    <div>
+                      <span className="text-2xl font-bold text-primary">${product.quarterlyPrice}</span>
+                      <span className="text-xs text-muted-foreground">/3mo</span>
+                    </div>
+                  </div>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                    <li key={index} className="flex items-center gap-2 text-xs">
+                      <Check className="h-3 w-3 text-primary flex-shrink-0" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="flex gap-2">
                 <Button
-                  className="w-full"
-                  variant={product.popular ? "default" : "outline"}
-                  onClick={() => handlePayPal(product.name, product.price)}
+                  size="sm"
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => handlePayPal(product.name, product.monthlyPrice, "1 Month")}
                 >
-                  Buy with PayPal
+                  1 Month
+                </Button>
+                <Button
+                  size="sm"
+                  className="flex-1"
+                  onClick={() => handlePayPal(product.name, product.quarterlyPrice, "3 Months")}
+                >
+                  3 Months
                 </Button>
               </CardFooter>
             </Card>

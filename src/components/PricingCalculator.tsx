@@ -1,39 +1,18 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Calculator } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, Check, Zap } from "lucide-react";
 
-const systems = [
-  { id: "s4hana-2025", name: "S/4 HANA 2025", basePrice: 55 },
-  { id: "s4hana-2023", name: "S/4 HANA 2023", basePrice: 49 },
-  { id: "s4hana-2022", name: "S/4 HANA 2022", basePrice: 45 },
-  { id: "ecc-ehp8", name: "ECC IDES EHP8", basePrice: 39 },
-  { id: "bw-75", name: "BW 7.5", basePrice: 35 },
-  { id: "crm-ehp2", name: "CRM IDES EHP2", basePrice: 35 },
-  { id: "dedicated", name: "Dedicated Server", basePrice: 499 },
+const subscriptionPlans = [
+  { id: "1-month", name: "1 Month", price: 50, savings: null },
+  { id: "3-months", name: "3 Months", price: 130, savings: "Save $20" },
+  { id: "6-months", name: "6 Months", price: 250, savings: "Save $50" },
+  { id: "1-year", name: "1 Year", price: 450, savings: "Save $150" },
 ];
 
 const PricingCalculator = () => {
-  const [selectedSystem, setSelectedSystem] = useState("");
-  const [days, setDays] = useState([30]);
-  const [users, setUsers] = useState([1]);
-
-  const system = systems.find((s) => s.id === selectedSystem);
-  const dailyRate = system ? system.basePrice / 30 : 0;
-  const totalPrice = Math.round(dailyRate * days[0] * users[0]);
-
-  const handlePayPal = () => {
-    if (!system) return;
-    const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mascorpit@gmail.com&item_name=${encodeURIComponent(system.name + " - " + days[0] + " days - " + users[0] + " user(s) - Way2ERP")}&amount=${totalPrice}&currency_code=USD`;
+  const handlePayPal = (planName: string, price: number) => {
+    const paypalUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mascorpit@gmail.com&item_name=${encodeURIComponent(planName + " Subscription - Way2ERP")}&amount=${price}&currency_code=USD`;
     window.open(paypalUrl, "_blank");
   };
 
@@ -41,82 +20,55 @@ const PricingCalculator = () => {
     <section id="pricing" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
+          <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20">
+            <Zap className="h-3 w-3 mr-1" />
+            Flexible Pricing
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Price Calculator
+            💰 Subscription Plans
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Calculate your custom pricing based on system, duration, and number of users
+            Choose your subscription duration and save more with longer commitments
           </p>
         </div>
 
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5 text-primary" />
-              Calculate Your Price
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-2">
-              <Label>Select System</Label>
-              <Select value={selectedSystem} onValueChange={setSelectedSystem}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Choose a system..." />
-                </SelectTrigger>
-                <SelectContent>
-                  {systems.map((sys) => (
-                    <SelectItem key={sys.id} value={sys.id}>
-                      {sys.name} - ${sys.basePrice}/month
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label>Duration: {days[0]} days</Label>
-              <Slider
-                value={days}
-                onValueChange={setDays}
-                min={7}
-                max={365}
-                step={1}
-                className="py-4"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label>Number of Users: {users[0]}</Label>
-              <Slider
-                value={users}
-                onValueChange={setUsers}
-                min={1}
-                max={10}
-                step={1}
-                className="py-4"
-              />
-            </div>
-
-            {selectedSystem && (
-              <div className="p-6 bg-accent/50 rounded-lg text-center">
-                <p className="text-sm text-muted-foreground mb-2">Total Price</p>
-                <p className="text-4xl font-bold text-foreground">${totalPrice}</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {system?.name} • {days[0]} days • {users[0]} user(s)
-                </p>
-              </div>
-            )}
-
-            <Button
-              className="w-full"
-              size="lg"
-              disabled={!selectedSystem}
-              onClick={handlePayPal}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {subscriptionPlans.map((plan, index) => (
+            <Card 
+              key={plan.id} 
+              className={`relative flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                index === 3 ? "border-primary shadow-lg ring-2 ring-primary/20" : ""
+              }`}
             >
-              Pay with PayPal
-            </Button>
-          </CardContent>
-        </Card>
+              {plan.savings && (
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white">
+                  {plan.savings}
+                </Badge>
+              )}
+              <CardHeader className="text-center pb-2">
+                <div className="mx-auto mb-3 p-3 rounded-full bg-primary/10">
+                  <Calendar className="h-6 w-6 text-primary" />
+                </div>
+                <CardTitle className="text-xl">{plan.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow flex flex-col items-center justify-between gap-4">
+                <div className="text-center">
+                  <span className="text-4xl font-bold text-foreground">${plan.price}</span>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {plan.id === "1-month" ? "per month" : "total"}
+                  </p>
+                </div>
+                <Button 
+                  className="w-full" 
+                  variant={index === 3 ? "default" : "outline"}
+                  onClick={() => handlePayPal(plan.name, plan.price)}
+                >
+                  Subscribe Now
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
