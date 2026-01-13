@@ -50,13 +50,13 @@ const products = [
     features: ["IDES Data", "Developer Keys", "Full CRM", "24/7 Access", "No VPN Required"],
   },
   {
-    id: "s4hana-1909",
-    name: "S/4 HANA 1909",
-    description: "Non-IDES S/4HANA with SAP_ALL profile for development",
-    price: 42,
+    id: "s4hana-2025",
+    name: "S/4 HANA 2025",
+    description: "Latest S/4HANA 2025 release with SAP_ALL profile and newest features",
+    price: 55,
     period: "month",
     popular: false,
-    features: ["SAP_ALL Profile", "Developer Keys", "Clean System", "24/7 Access", "No VPN Required"],
+    features: ["SAP_ALL Profile", "Developer Keys", "Latest Release", "24/7 Access", "No VPN Required"],
   },
   {
     id: "s4hana-2021",
