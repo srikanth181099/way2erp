@@ -13,13 +13,13 @@ import { Slider } from "@/components/ui/slider";
 import { Calculator } from "lucide-react";
 
 const systems = [
+  { id: "s4hana-2025", name: "S/4 HANA 2025", basePrice: 55 },
   { id: "s4hana-2023", name: "S/4 HANA 2023", basePrice: 49 },
   { id: "s4hana-2022", name: "S/4 HANA 2022", basePrice: 45 },
   { id: "ecc-ehp8", name: "ECC IDES EHP8", basePrice: 39 },
   { id: "bw-75", name: "BW 7.5", basePrice: 35 },
   { id: "crm-ehp2", name: "CRM IDES EHP2", basePrice: 35 },
-  { id: "s4hana-1909", name: "S/4 HANA 1909", basePrice: 42 },
-  { id: "dedicated", name: "Dedicated Server", basePrice: 199 },
+  { id: "dedicated", name: "Dedicated Server", basePrice: 499 },
 ];
 
 const PricingCalculator = () => {
