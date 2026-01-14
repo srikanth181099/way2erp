@@ -1,73 +1,87 @@
-# Welcome to your Lovable project
+# Way2ERP
 
-## Project info
+Enterprise Resource Planning Solutions Website
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Quick Start (Local Development)
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Build for Production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm install
+npm run build
+```
 
-**Use GitHub Codespaces**
+This creates a `dist/` folder with static files ready to deploy.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## Deploy on aaPanel (Without Docker)
 
-This project is built with:
+### Step 1: Prepare Files
+```bash
+git clone https://github.com/srikanth181099/way2erp.git
+cd way2erp
+npm install
+npm run build
+```
 
-- Vite
+### Step 2: Create Website in aaPanel
+1. Open aaPanel → **Website** → **Add Site**
+2. Enter your domain (e.g., `way2erp.com`)
+3. Select **Create Database**: No
+4. Select **PHP Version**: Pure Static
+5. Click **Submit**
+
+### Step 3: Upload Built Files
+1. Go to **Files** in aaPanel
+2. Navigate to your site's root directory (e.g., `/www/wwwroot/way2erp.com/`)
+3. Delete default files
+4. Upload all contents from the `dist/` folder
+
+### Step 4: Configure Nginx for SPA Routing
+1. Go to **Website** → Click your site → **Config**
+2. Add this inside the `server` block:
+
+```nginx
+location / {
+    try_files $uri $uri/ /index.html;
+}
+
+# Gzip compression
+gzip on;
+gzip_vary on;
+gzip_min_length 1024;
+gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;
+
+# Cache static assets
+location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+}
+```
+
+3. Save and restart Nginx
+
+### Step 5: Enable SSL (Optional)
+1. Go to **Website** → Click your site → **SSL**
+2. Apply for Let's Encrypt certificate
+3. Enable **Force HTTPS**
+
+---
+
+## Technologies Used
+
+- React 18
 - TypeScript
-- React
-- shadcn-ui
+- Vite
 - Tailwind CSS
+- shadcn/ui
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT
